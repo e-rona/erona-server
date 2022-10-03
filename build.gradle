@@ -1,0 +1,90 @@
+buildscript {
+    ext {
+        springBootVersion = '2.7.4'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.14.RELEASE"
+    }
+}
+
+allprojects {
+    group 'com.sg.erona'
+    version '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 11
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+}
+
+//project(':sample-api') {
+//    dependencies {
+//        compile project(':sample-common')
+//    }
+//}
+//
+//project(':sample-admin') {
+//    dependencies {
+//        compile project(':sample-common')
+//    }
+//}
+
+//
+//plugins {
+//    id 'org.springframework.boot' version '2.7.4'
+//    id 'java'
+//}
+//
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//bootJar.enabled = false
+//
+//subprojects {
+//    group = 'com.sg.erona'
+//    version = '0.0.1-SNAPSHOT'
+//    sourceCompatibility = '11'
+//
+//    apply plugin: 'java'
+//    apply plugin: 'java-library'
+//    apply plugin: 'org.springframework.boot'
+//    apply plugin: 'io.spring.dependency-management'
+//
+//    configurations {
+//        compileOnly {
+//            extendsFrom annotationProcessor
+//        }
+//    }
+//
+//    repositories {
+//        mavenCentral()
+//    }
+//
+//    dependencies {
+//        compileOnly 'org.projectlombok:lombok'
+//        annotationProcessor 'org.projectlombok:lombok'
+//        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    }
+//
+//    test {
+//        useJUnitPlatform()
+//    }
+//}
