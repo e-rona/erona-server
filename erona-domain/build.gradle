@@ -1,6 +1,16 @@
+//apply plugin : 'org.springframework.boot'
+//
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+//    annotationProcessor 'org.projectlombok:lombok'
 }
 
 bootJar {
