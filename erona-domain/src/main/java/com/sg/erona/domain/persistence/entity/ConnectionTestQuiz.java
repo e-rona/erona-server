@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name="connection_test_quiz")
 @Entity
 @SuperBuilder
-public class ConnectionTestQuiz {
+public class ConnectionTestQuiz{
 
     @Id
     @Column(nullable = false)
