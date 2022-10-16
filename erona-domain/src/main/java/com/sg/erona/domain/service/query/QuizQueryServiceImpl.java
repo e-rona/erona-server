@@ -1,30 +1,47 @@
 package com.sg.erona.domain.service.query;
 
+import com.sg.erona.domain.persistence.entity.ConnectionTestQuiz;
+import com.sg.erona.domain.persistence.repository.ConnectionTestQuizRepository;
 import com.sg.erona.domain.service.query.vo.QuizDetailVO;
 import com.sg.erona.domain.service.query.vo.QuizVO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class QuizQueryServiceImpl implements QuizQueryService {
 
+    @Autowired
+    private ConnectionTestQuizRepository connectionTestQuizRepository;
+
     @Override
     public QuizVO getQuizList() {
-        //TODO : DB 연결 후 수정
+        List<Long> ids = new ArrayList<>();
+        // test
+        ids.add(Long.parseLong("1"));
+        ids.add(Long.parseLong("2"));
+        ids.add(Long.parseLong("3"));
+        ids.add(Long.parseLong("4"));
+        ids.add(Long.parseLong("5"));
+        List<ConnectionTestQuiz> connectionTestQuizs = connectionTestQuizRepository.findAllByIdIn(ids);
 
         List<QuizDetailVO> quizDetailVOS = new ArrayList<>();
 
-        quizDetailVOS.add(QuizDetailVO.builder().quiz("이심").answer("전심").build());
-        quizDetailVOS.add(QuizDetailVO.builder().quiz("가는말이 고와야").answer("오는말이 곱다").build());
-        quizDetailVOS.add(QuizDetailVO.builder().quiz("작심").answer("삼일").build());
-        quizDetailVOS.add(QuizDetailVO.builder().quiz("감언").answer("이설").build());
-        quizDetailVOS.add(QuizDetailVO.builder().quiz("바늘 도둑이").answer("소도둑 된다").build());
+        quizDetailVOS = connectionTestQuizs.stream().map(x->
+                QuizDetailVO.builder()
+                    .quiz(x.getTestQuiz())
+                    .answer(x.getTestAnswer())
+                .build()
+            ).collect(Collectors.toList());
 
 
         return QuizVO.builder()
-                .gameCode(new Long(1))
+                .gameCode(Long.parseLong("1"))
                 .gameList(quizDetailVOS)
                 .build();
     }
