@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 //@ServletComponentScan
 @ComponentScan({ "com.sg.erona.*" })
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 //TODO : DB 연결 후 수정
 public class EronaApplication {
     public static void main(String[] args) {
