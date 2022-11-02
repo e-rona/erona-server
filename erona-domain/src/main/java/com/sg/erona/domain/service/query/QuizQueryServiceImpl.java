@@ -48,8 +48,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
             // 영화 명대사 게임
             quizDetailVOS = this.getMovieGame();
         } else {
-            // ?? 게임
-
+            // TODO : 게임 추가 예정
         }
 
         return QuizVO.builder()
@@ -80,7 +79,51 @@ public class QuizQueryServiceImpl implements QuizQueryService {
     // TYPE 2 : 사칙연산 게임
     private List<QuizDetailVO> getArithmeticGame() {
 
-        return null;
+        List<QuizDetailVO> quizDetailVOS = new ArrayList<>();
+
+        for(int i=0;i<5;i++){
+            Long a = Double.valueOf(Math.random()*100 + 1).longValue();
+            Long b = Double.valueOf(Math.random()*100 + 1).longValue();
+            Long op = Double.valueOf(Math.random()*4 + 1).longValue();
+            Long ans = new Long(0);
+            String opc = "";
+
+            if(op == 1) {
+                ans = a + b;
+                opc = "+";
+            } else if (op == 2) {
+                if(b > a) {
+                    Long temp = a;
+                    a = b;
+                    b = temp;
+                }
+                ans = a - b;
+                opc = "-";
+            } else if (op == 3){
+                b = b%10;
+                ans = a * b;
+                opc = "*";
+            } else {
+                b = b%20;
+                if(b > a) {
+                    Long temp = a;
+                    a = b;
+                    b = temp;
+                }
+                a -= a%b;
+                ans = a / b;
+                opc = "/";
+            }
+
+            String quiz = "";
+            quiz = quiz.concat(a.toString()).concat(opc).concat(b.toString());
+            quizDetailVOS.add(QuizDetailVO.builder()
+                    .quiz(quiz)
+                    .answer(ans.toString())
+                    .build());
+        }
+
+        return quizDetailVOS;
     }
 
     // TYPE 3 : 영화 명대사 게임
