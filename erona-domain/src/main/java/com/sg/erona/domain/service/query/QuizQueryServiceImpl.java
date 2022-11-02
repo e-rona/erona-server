@@ -52,25 +52,6 @@ public class QuizQueryServiceImpl implements QuizQueryService {
 
         }
 
-       /* List<Long> ids = new ArrayList<>();
-        // test
-        ids.add(Long.parseLong("1"));
-        ids.add(Long.parseLong("2"));
-        ids.add(Long.parseLong("3"));
-        ids.add(Long.parseLong("4"));
-        ids.add(Long.parseLong("5"));
-        List<ConnectionTestQuiz> connectionTestQuizs = connectionTestQuizRepository.findAllByIdIn(ids);
-
-        List<QuizDetailVO> quizDetailVOS = new ArrayList<>();
-
-        quizDetailVOS = connectionTestQuizs.stream().map(x->
-                QuizDetailVO.builder()
-                    .quiz(x.getTestQuiz())
-                    .answer(x.getTestAnswer())
-                .build()
-            ).collect(Collectors.toList());
-        */
-
         return QuizVO.builder()
                 .gameCode(randomGame)
                 .gameList(quizDetailVOS)
