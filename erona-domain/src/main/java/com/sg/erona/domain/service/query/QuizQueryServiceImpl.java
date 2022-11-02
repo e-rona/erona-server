@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -78,10 +80,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
     // TYPE 1 : 사자성어 게임
     private List<QuizDetailVO> getIdiomGame(){
         Long count = idiomQuizRepository.countBy();
-        List<Long> ids = new ArrayList<>();
-        for(int i=0;i<5;i++){
-            ids.add(Double.valueOf(Math.random()*count + 1).longValue());
-        }
+        List<Long> ids = this.getRandomNumbers(count);
 
         List<IdiomQuiz> connectionTestQuizs = idiomQuizRepository.findAllByIdIn(ids);
 
@@ -97,19 +96,15 @@ public class QuizQueryServiceImpl implements QuizQueryService {
     }
 
     // TYPE 2 : 사칙연산 게임
-    private List<QuizDetailVO> getArithmeticGame(){
+    private List<QuizDetailVO> getArithmeticGame() {
 
         return null;
     }
 
-
     // TYPE 3 : 영화 명대사 게임
     private List<QuizDetailVO> getMovieGame(){
         Long count = movieQuizRepository.countBy();
-        List<Long> ids = new ArrayList<>();
-        for(int i=0;i<5;i++){
-            ids.add(Double.valueOf(Math.random()*count + 1).longValue());
-        }
+        List<Long> ids = this.getRandomNumbers(count);
 
         List<IdiomQuiz> connectionTestQuizs = movieQuizRepository.findAllByIdIn(ids);
 
@@ -122,6 +117,19 @@ public class QuizQueryServiceImpl implements QuizQueryService {
 
 
         return quizDetailVOS;
+    }
+
+    private List<Long> getRandomNumbers(Long max){
+        Set<Long> set = new HashSet<>();
+
+        while (set.size() < 5) {
+            Double d = Math.random() * max + 1;
+            set.add(d.longValue());
+        }
+
+        List<Long> list = new ArrayList<>(set);
+
+        return list;
     }
 
 }
