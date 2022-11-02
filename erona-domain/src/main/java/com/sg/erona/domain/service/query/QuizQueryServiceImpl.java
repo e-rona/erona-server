@@ -2,6 +2,7 @@ package com.sg.erona.domain.service.query;
 
 import com.sg.erona.domain.persistence.entity.ConnectionTestQuiz;
 import com.sg.erona.domain.persistence.entity.IdiomQuiz;
+import com.sg.erona.domain.persistence.entity.MovieQuiz;
 import com.sg.erona.domain.persistence.repository.ConnectionTestQuizRepository;
 import com.sg.erona.domain.persistence.repository.IdiomQuizRepository;
 import com.sg.erona.domain.persistence.repository.MovieQuizRepository;
@@ -45,7 +46,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
             quizDetailVOS = this.getArithmeticGame();
         } else if (randomGame == 3) {
             // 영화 명대사 게임
-
+            quizDetailVOS = this.getMovieGame();
         } else {
             // ?? 게임
 
@@ -106,7 +107,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
         Long count = movieQuizRepository.countBy();
         List<Long> ids = this.getRandomNumbers(count);
 
-        List<IdiomQuiz> connectionTestQuizs = movieQuizRepository.findAllByIdIn(ids);
+        List<MovieQuiz> connectionTestQuizs = movieQuizRepository.findAllByIdIn(ids);
 
         List<QuizDetailVO> quizDetailVOS = connectionTestQuizs.stream().map(x->
                 QuizDetailVO.builder()

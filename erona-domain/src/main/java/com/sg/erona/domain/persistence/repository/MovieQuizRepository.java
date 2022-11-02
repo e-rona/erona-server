@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface MovieQuizRepository extends JpaRepository<MovieQuiz, Long> {
     Long countBy();
-    List<IdiomQuiz> findAllByIdIn(List<Long> ids);
+    List<MovieQuiz> findAllByIdIn(List<Long> ids);
 }
