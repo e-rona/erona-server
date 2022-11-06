@@ -76,7 +76,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
 
         List<QuizDetailVO> quizDetailVOS = new ArrayList<>();
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<3;i++){
             Long a = Double.valueOf(Math.random()*100 + 1).longValue();
             Long b = Double.valueOf(Math.random()*100 + 1).longValue();
             Long op = Double.valueOf(Math.random()*4 + 1).longValue();
@@ -142,7 +142,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
     private List<Long> getRandomNumbers(Long max){
         Set<Long> set = new HashSet<>();
 
-        while (set.size() < 5) {
+        while (set.size() < 3) {
             Double d = Math.random() * max + 1;
             set.add(d.longValue());
         }
