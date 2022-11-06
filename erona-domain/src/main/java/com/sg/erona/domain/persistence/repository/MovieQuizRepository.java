@@ -1,7 +1,5 @@
 package com.sg.erona.domain.persistence.repository;
 
-import com.sg.erona.domain.persistence.entity.ConnectionTestQuiz;
-import com.sg.erona.domain.persistence.entity.IdiomQuiz;
 import com.sg.erona.domain.persistence.entity.MovieQuiz;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

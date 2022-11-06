@@ -1,9 +1,7 @@
 package com.sg.erona.domain.service.query;
 
-import com.sg.erona.domain.persistence.entity.ConnectionTestQuiz;
 import com.sg.erona.domain.persistence.entity.IdiomQuiz;
 import com.sg.erona.domain.persistence.entity.MovieQuiz;
-import com.sg.erona.domain.persistence.repository.ConnectionTestQuizRepository;
 import com.sg.erona.domain.persistence.repository.IdiomQuizRepository;
 import com.sg.erona.domain.persistence.repository.MovieQuizRepository;
 import com.sg.erona.domain.service.query.vo.QuizDetailVO;
@@ -21,9 +19,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class QuizQueryServiceImpl implements QuizQueryService {
-
-    @Autowired
-    private ConnectionTestQuizRepository connectionTestQuizRepository;
 
     @Autowired
     private IdiomQuizRepository idiomQuizRepository;
