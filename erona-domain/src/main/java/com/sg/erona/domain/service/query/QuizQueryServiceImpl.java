@@ -35,7 +35,7 @@ public class QuizQueryServiceImpl implements QuizQueryService {
     public QuizVO getQuizList() {
 
         // 게임 종류 선택
-        Long randomGame = Double.valueOf(Math.random()*4 + 1).longValue();
+        Long randomGame = Double.valueOf(Math.random()*3 + 1).longValue();
 
         List<QuizDetailVO> quizDetailVOS = new ArrayList<>();
         if(randomGame == 1){
