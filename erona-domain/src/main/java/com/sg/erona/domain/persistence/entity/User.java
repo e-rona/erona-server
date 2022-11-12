@@ -15,21 +15,19 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="connection_test_quiz")
+@Table(name="users")
 @Entity
 @SuperBuilder
-public class ConnectionTestQuiz{
-
+public class User {
     @Id
     @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
-    private String testQuiz;
+    private String email;
 
     @Column(nullable = false)
-    private String testAnswer;
+    private String password;
 
-    @Column(nullable = false)
-    private Long testLevel;
+
 }
