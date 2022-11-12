@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 // @DataJpaTest : 저장을 위한 JPA 연관 관계가 적절히 구성되었는지, Repository 메서드가 제대로 구현되었는지 확인하는 것이 목적
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Import(DatabaseSourceConfig.class)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // Test에 실제 DB 사용
+@Import(DatabaseSourceConfig.class) // DB configuration class import
 //@ActiveProfiles("test")
 class IdiomQuizRepositoryTest {
 
