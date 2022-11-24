@@ -15,10 +15,10 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="users")
+@Table(name="members")
 @Entity
 @SuperBuilder
-public class User {
+public class Member {
     @Id
     @Column(nullable = false)
     private Long id;
